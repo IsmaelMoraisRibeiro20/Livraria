@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,7 +38,7 @@ public class Autor {
 	@Column(name = "nacionalidade", length = 100, nullable = false )
 	private String nacionalidade;
 	
-	@OneToMany(mappedBy = "autor")//Aqui é um autor para muitos livros, como ele nao faz parte da tabela, eu tenho qeu colocar (mappedBy = "autor")
+	@OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)//Aqui é um autor para muitos livros, como ele nao faz parte da tabela, eu tenho qeu colocar (mappedBy = "autor")
 	private List<Livro> livros;//aqui é seu quiser pegar os livros que é do autor
 
 	public UUID getId() {

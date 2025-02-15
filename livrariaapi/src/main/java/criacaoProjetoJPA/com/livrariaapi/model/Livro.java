@@ -3,6 +3,7 @@
 import java.time.LocalDate;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,6 +21,8 @@ import lombok.Data;
 @Data
 public class Livro {
 	
+	
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -41,11 +44,101 @@ public class Livro {
 	@Column(name = "preco", precision = 12)//porque aundo eu fiz minha tabela eu disse que vai ter 18 caracteres e 2 decimais
 	private Double preco;
 	
-	@ManyToOne//To dizendo que vai ter muitos livros para um autor
-	@JoinColumn(name = "id_autor")//fazendo o relaciando das minhas tabelas
+	@ManyToOne//(cascade = CascadeType.ALL) //To dizendo que vai ter muitos livros para um autor
+	@JoinColumn(name = "id_autor") //fazendo o relaciando das minhas tabelas
 	private Autor autor;
 	
 	
+	
+	public UUID getId() {
+		return id;
+	}
+
+
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+
+	public LocalDate getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+
+
+	public void setDataPublicacao(LocalDate dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
+
+
+	public GeneroLivro getGenero() {
+		return genero;
+	}
+
+
+
+	public void setGenero(GeneroLivro genero) {
+		this.genero = genero;
+	}
+
+
+
+	public Double getPreco() {
+		return preco;
+	}
+
+
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Livro [id=" + id + ", isbn=" + isbn + ", titulo=" + titulo + ", dataPublicacao=" + dataPublicacao
+				+ ", genero=" + genero + ", preco=" + preco + ", autor=" + autor + "]";
+	}
 	
 
 }

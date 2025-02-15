@@ -9,7 +9,7 @@ import criacaoProjetoJPA.com.livrariaapi.repository.AutorRepository;
 public class LivrariaapiApplication {
 
 	public static void main(String[] args) {
-	 SpringApplication.run(LivrariaapiApplication.class, args);
+		SpringApplication.run(LivrariaapiApplication.class, args);
 		
 		
 		
