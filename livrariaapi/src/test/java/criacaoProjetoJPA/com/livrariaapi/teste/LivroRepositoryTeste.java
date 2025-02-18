@@ -1,13 +1,10 @@
 package criacaoProjetoJPA.com.livrariaapi.teste;
 
-import java.util.List;
-import java.util.UUID;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import criacaoProjetoJPA.com.livrariaapi.model.Livro;
+import criacaoProjetoJPA.com.livrariaapi.model.GeneroLivro;
 import criacaoProjetoJPA.com.livrariaapi.repository.AutorRepository;
 import criacaoProjetoJPA.com.livrariaapi.repository.LivroRepository;
 
@@ -95,6 +92,9 @@ class LivroRepositoryTeste {
 		System.out.println(livro.getAutor().getName());
 	}*/
 	
+	
+	//Pesquisa por titulo
+	/*
 	@Test
 	void pesquisaPorTituloTest() {
 		List<Livro> lista = livroRepository.findByTitulo("O rouba da casa assombrada");
@@ -103,5 +103,72 @@ class LivroRepositoryTeste {
 			System.out.println(lista.get(i).getTitulo());
 		}
 	}
+	
+	@Test
+	void listarLivros() {
+		var resultado = livroRepository.listarLivros();
+		for(int i = 0; i < resultado.size(); i++) {
+			System.out.println(resultado.get(i).getTitulo());
+		}
+			
+	}
+	
+	@Test
+	void listarAutoresDosLivros() {
+		var resultado = livroRepository.listarAutoresDoLivro();
+		for(int i = 0; i < resultado.size(); i++) {
+			System.out.println(resultado.get(i).getName());
+		}
+			
+	}
+	
+	@Test
+	void listarGenerosDeAutoresBrasileiros() {
+		var resultado = livroRepository.listarGenerosAutoresBrasileiros();
+		resultado.forEach(System.out::println);
+			
+	}
+	
+	@Test
+	void listarPorGeneroQueryParamTest() {
+		var resultado = livroRepository.findByGenero(GeneroLivro.FICCAO, "preco");
+		for(int i =0; i < resultado.size(); i++) {
+			System.out.println(resultado.get(i).getGenero() + " " + resultado.get(i).getPreco());
+		};
+			
+	}*/
+	
+	@Test
+	void listarPorGeneroQueryPositionalParametro() {
+		var resultado = livroRepository.findByGeneroPositionalParameters(GeneroLivro.FICCAO);
+		for(int i =0; i < resultado.size(); i++) {
+			System.out.println(resultado.get(i).getGenero()+ " " + resultado.get(i).getPreco());
+		};
+			
+	}
+	
+	@Test 
+	void deletePorGenero() {
+		livroRepository.deleteByGenero(GeneroLivro.FICCAO);
+		
+	}
+	
+	
+	@Test
+	void updateGeneroDoLivroTest() {
+		livroRepository.updateGenero(GeneroLivro.ROMANCE);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
