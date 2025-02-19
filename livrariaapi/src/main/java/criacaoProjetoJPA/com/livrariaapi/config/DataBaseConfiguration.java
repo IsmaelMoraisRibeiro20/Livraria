@@ -10,7 +10,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-//@Configuration
+@Configuration
 public class DataBaseConfiguration {
 	
 	@Value("${spring.datasource.url}")

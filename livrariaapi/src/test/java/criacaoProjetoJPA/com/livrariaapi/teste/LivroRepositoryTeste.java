@@ -1,5 +1,7 @@
 package criacaoProjetoJPA.com.livrariaapi.teste;
 
+import criacaoProjetoJPA.com.livrariaapi.model.Autor;
+import criacaoProjetoJPA.com.livrariaapi.model.Livro;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,6 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import criacaoProjetoJPA.com.livrariaapi.model.GeneroLivro;
 import criacaoProjetoJPA.com.livrariaapi.repository.AutorRepository;
 import criacaoProjetoJPA.com.livrariaapi.repository.LivroRepository;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
 
 @SpringBootTest
 class LivroRepositoryTeste {
@@ -16,7 +22,7 @@ class LivroRepositoryTeste {
 	
 	@Autowired
 	AutorRepository autorRepository;
-	/*
+
 	@Test
 	void salvarSemCascade() {
 		Livro livro = new Livro();
@@ -33,8 +39,8 @@ class LivroRepositoryTeste {
 				.orElse(null);
 		
 		livro.setAutor(autor);
-		
-		repository.save(livro);
+
+		livroRepository.save(livro);
 		
 	}
 	@Test
@@ -52,12 +58,12 @@ class LivroRepositoryTeste {
 		autor.setNacionalidade("brasileiro");
 		
 		livro.setAutor(autor);
+
+		livroRepository.save(livro);
 		
-		repository.save(livro);
-		
-	}*/
+	}
 	
-	/*
+
 	@Test
 	void atualizarAutorDoLivro() {
 		var livroParaAtualizar = livroRepository.findById(UUID.fromString("7bd98081-2e8b-470f-9055-28b4bec073a1")).orElse(null);
@@ -70,17 +76,17 @@ class LivroRepositoryTeste {
 		
 		livroRepository.save(livroParaAtualizar);
 		
-	}*/
+	}
 	
-	/*
+
 	@Test
 	void deletar() {
 		UUID id = UUID.fromString("7bd98081-2e8b-470f-9055-28b4bec073a1");
 		
 		livroRepository.deleteById(id);
-	}*/
+	}
 	
-	/*
+
 	@Test
 	void buscarLivro() {
 		UUID id = UUID.fromString("4d15f866-91c0-4e9c-9c55-57f7fbb47951");
@@ -90,11 +96,11 @@ class LivroRepositoryTeste {
 		System.out.println(livro.getTitulo());
 		System.out.println("Autor:");
 		System.out.println(livro.getAutor().getName());
-	}*/
+	}
 	
 	
 	//Pesquisa por titulo
-	/*
+
 	@Test
 	void pesquisaPorTituloTest() {
 		List<Livro> lista = livroRepository.findByTitulo("O rouba da casa assombrada");
@@ -136,7 +142,7 @@ class LivroRepositoryTeste {
 			System.out.println(resultado.get(i).getGenero() + " " + resultado.get(i).getPreco());
 		};
 			
-	}*/
+	}
 	
 	@Test
 	void listarPorGeneroQueryPositionalParametro() {
@@ -158,16 +164,6 @@ class LivroRepositoryTeste {
 	void updateGeneroDoLivroTest() {
 		livroRepository.updateGenero(GeneroLivro.ROMANCE);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

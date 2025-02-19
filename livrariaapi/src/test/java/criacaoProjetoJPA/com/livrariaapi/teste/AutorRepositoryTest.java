@@ -26,7 +26,7 @@ class AutorRepositoryTest {
 	LivroRepository repositoryLivro;
 	
 	
-	/*@Test
+	@Test
 	public void salvarTest( ) {
 		Autor autor = new Autor();
 		autor.setName("Branca de neve");
@@ -37,7 +37,7 @@ class AutorRepositoryTest {
 		
 		System.out.println("Autor salvo " + autorSalvo.toString());
 		
-	}*/
+	}
 	
 	@Test
 	public void atualizarTest() {
