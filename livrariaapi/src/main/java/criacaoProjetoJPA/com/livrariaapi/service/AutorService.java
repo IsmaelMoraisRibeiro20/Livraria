@@ -1,11 +1,13 @@
 package criacaoProjetoJPA.com.livrariaapi.service;
 
-import criacaoProjetoJPA.com.livrariaapi.controller.dto.AutorDTO;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
 import criacaoProjetoJPA.com.livrariaapi.model.Autor;
 import criacaoProjetoJPA.com.livrariaapi.repository.AutorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
 @Service
 public class AutorService {
@@ -19,5 +21,27 @@ public class AutorService {
 
     public Autor salvar(Autor autor){
         return autorRepository.save(autor);
+    }
+    
+    public Optional<Autor> obterPorID(UUID id){
+    	return autorRepository.findById(id);
+    }
+    
+    public void deletar(Autor autor) {
+    	autorRepository.delete(autor);
+    }
+    
+    public List<Autor> pesquisa(String nome, String nacionalidade){
+    	if(nome != null && nacionalidade != null) {
+    		return autorRepository.findByNomeAndNacionalidade(nome, nacionalidade);
+    	}
+    	
+    	if(nome != null) {
+    		return autorRepository.findByNome(nome);
+    	}else if(nacionalidade != null){
+    		return autorRepository.findByNacionalidade(nacionalidade);
+    	}
+    	
+    	return autorRepository.findAll();
     }
 }

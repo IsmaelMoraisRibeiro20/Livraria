@@ -53,7 +53,7 @@ class LivroRepositoryTeste {
 		livro.setDataPublicacao(LocalDate.of(1980, 1 , 2));
 		
 		Autor autor = new Autor();
-		autor.setName("Judas");
+		autor.setNome("Judas");
 		autor.setDataNascimento(LocalDate.of(1589, 01, 31));
 		autor.setNacionalidade("brasileiro");
 		
@@ -95,7 +95,7 @@ class LivroRepositoryTeste {
 		System.out.println("Livro");
 		System.out.println(livro.getTitulo());
 		System.out.println("Autor:");
-		System.out.println(livro.getAutor().getName());
+		System.out.println(livro.getAutor().getNome());
 	}
 	
 	
@@ -123,7 +123,7 @@ class LivroRepositoryTeste {
 	void listarAutoresDosLivros() {
 		var resultado = livroRepository.listarAutoresDoLivro();
 		for(int i = 0; i < resultado.size(); i++) {
-			System.out.println(resultado.get(i).getName());
+			System.out.println(resultado.get(i).getNome());
 		}
 			
 	}

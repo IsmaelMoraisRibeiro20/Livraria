@@ -24,7 +24,7 @@ public class Livro {
 	
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "id_livro")
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 	

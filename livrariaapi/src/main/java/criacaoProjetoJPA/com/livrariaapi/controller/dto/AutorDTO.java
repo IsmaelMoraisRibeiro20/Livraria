@@ -1,17 +1,20 @@
 package criacaoProjetoJPA.com.livrariaapi.controller.dto;
 
+import java.time.LocalDate;
+import java.util.UUID;
+
 import criacaoProjetoJPA.com.livrariaapi.model.Autor;
 
-import java.time.LocalDate;
-
 public record AutorDTO(
+		UUID id,
         String nome,
         String nacionalidade,
-        LocalDate dataNascimento) {
+        LocalDate dataNascimento) 
+{
 
     public Autor mapearParaAutor(){
         Autor autor = new Autor();
-        autor.setName(this.nome);
+        autor.setNome(this.nome);
         autor.setDataNascimento(this.dataNascimento);
         autor.setNacionalidade(this.nacionalidade);
 
